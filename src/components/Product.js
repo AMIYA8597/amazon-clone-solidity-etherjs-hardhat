@@ -6,19 +6,19 @@ import Rating from './Rating'
 
 import close from '../assets/close.svg'
 
-const Product = ({ item, provider, account, dappazon, togglePop }) => {
+const Product = ({ item, provider, account, amazon, togglePop }) => {
   const [order, setOrder] = useState(null)
   const [hasBought, setHasBought] = useState(false)
 
   const fetchDetails = async () => {
-    const events = await dappazon.queryFilter("Buy")
+    const events = await amazon.queryFilter("Buy")
     const orders = events.filter(
       (event) => event.args.buyer === account && event.args.itemId.toString() === item.id.toString()
     )
 
     if (orders.length === 0) return
 
-    const order = await dappazon.orders(account, orders[0].args.orderId)
+    const order = await amazon.orders(account, orders[0].args.orderId)
     setOrder(order)
   }
 
@@ -26,7 +26,7 @@ const Product = ({ item, provider, account, dappazon, togglePop }) => {
     const signer = await provider.getSigner()
 
     // Buy item...
-    let transaction = await dappazon.connect(signer).buy(item.id, { value: item.cost })
+    let transaction = await amazon.connect(signer).buy(item.id, { value: item.cost })
     await transaction.wait()
 
     setHasBought(true)
@@ -86,8 +86,8 @@ const Product = ({ item, provider, account, dappazon, togglePop }) => {
             Buy Now
           </button>
 
-          <p><small>Ships from</small> Dappazon</p>
-          <p><small>Sold by</small> Dappazon</p>
+          <p><small>Ships from</small> Amazon</p>
+          <p><small>Sold by</small> Amazon</p>
 
           {order && (
             <div className='product__bought'>

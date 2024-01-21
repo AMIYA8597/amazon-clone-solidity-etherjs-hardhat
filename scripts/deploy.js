@@ -5,7 +5,8 @@
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
 const hre = require("hardhat")
-const { items } = require("../src/items.json")
+const { items } = require("../src/items.json");
+const { ethers } = require("ethers")
 
 const tokens = (n) => {
   return ethers.utils.parseUnits(n.toString(), 'ether')
@@ -15,16 +16,16 @@ async function main() {
   // Setup accounts
   const [deployer] = await ethers.getSigners()
 
-  // Deploy Dappazon
-  const Dappazon = await hre.ethers.getContractFactory("Dappazon")
-  const dappazon = await Dappazon.deploy()
-  await dappazon.deployed()
+  // Deploy Amazon
+  const Amazon = await hre.ethers.getContractFactory("Amazon")
+  const amazon = await Amazon.deploy()
+  await amazon.deployed()
 
-  console.log(`Deployed Dappazon Contract at: ${dappazon.address}\n`)
+  console.log(`Deployed Amazon Contract at: ${amazon.address}\n`)
 
   // Listing items...
   for (let i = 0; i < items.length; i++) {
-    const transaction = await dappazon.connect(deployer).list(
+    const transaction = await amazon.connect(deployer).list(
       items[i].id,
       items[i].name,
       items[i].category,

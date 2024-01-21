@@ -1,4 +1,4 @@
-# Dappazon
+# Amazon
 
 ## Technology Stack & Tools
 
