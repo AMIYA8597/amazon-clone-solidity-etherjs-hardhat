@@ -7,5 +7,7 @@ contract GLDToken is ERC20 {
     constructor() ERC20("QuickNode Coin", "QKC") {
         _mint(msg.sender, 10000 * 10 ** decimals());
     }
+
     
+
 }

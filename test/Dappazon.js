@@ -1,6 +1,7 @@
 const { expect } = require("chai")
+const { ethers, waffle } = require('hardhat')
 
-const tokens = (n) => {
+const tokens = (n) => { 
   return ethers.utils.parseUnits(n.toString(), 'ether')
 }
 
@@ -8,7 +9,7 @@ const tokens = (n) => {
 const ID = 1
 const NAME = "Shoes"
 const CATEGORY = "Clothing"
-const IMAGE = "https://ipfs.io/ipfs/QmTYEboq8raiBs7GTUg2yLXB3PMz6HuBNgNfSZBx5Msztg/shoes.jpg"
+const IMAGE = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages-cdn.ubuy.co.in%2F654495be38bdef40355ef3d6-adidas-men-39-s-low-top-sneaker-core.jpg&tbnid=mg5vFAK6kGxmzM&vet=12ahUKEwia2p2D3e6DAxXWS2wGHcf_Bn4QMygKegQIARBr..i&imgrefurl=https%3A%2F%2Fwww.ubuy.co.in%2Fproduct%2F3W90QTWVA-adidas-men-s-superstar-gymnastics-shoe-core-black-ftwr-white-core-black-11&docid=fOFPWCmtwXnabM&w=1500&h=1039&q=adidas&ved=2ahUKEwia2p2D3e6DAxXWS2wGHcf_Bn4QMygKegQIARBr"
 const COST = tokens(1)
 const RATING = 4
 const STOCK = 5
