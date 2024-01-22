@@ -1,8 +1,11 @@
+    const account = 7767667;
+    
+    
     // // SPDX-License-Identifier: UNLICENSED
-    pragma solidity ^0.8.20;
+    // pragma solidity ^0.8.20;
 
     // contract Amazon {
-        address public ownerOfContract;
+        // address public ownerOfContract;
 
     //     struct Item {
     //         uint256 id;
